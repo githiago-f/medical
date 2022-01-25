@@ -1,0 +1,6 @@
+[submodule "oauth2"]
+	path = oauth2
+	url = https://github.com/githiago-f/oauth2
+[submodule "medical-patients"]
+	path = medical-patients
+	url = https://github.com/githiago-f/medical-patients
