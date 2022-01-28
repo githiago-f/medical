@@ -6,4 +6,4 @@
 	url = https://github.com/githiago-f/medical-patients
 [submodule "medical-gateway"]
 	path = medical-gateway
-	url = ./medical-gateway/
+	url = https://github.com/githiago-f/medical-gateway
