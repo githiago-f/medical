@@ -1,0 +1,36 @@
+version: '3.9'
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  default:
+    driver: local
+
+services:
+  gateway:
+    env_file: ./medical-gateway/.env
+    build:
+      dockerfile: ./Dockerfile
+      context: ./medical-gateway
+    container_name: 'node_medical-gateway'
+    volumes:
+      - ./medical-gateway:/usr/src/app/medical-gateway
+      - /usr/src/app/medical-gateway/node_modules
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    depends_on:
+      - patients
+
+  patients:
+    env_file: ./medical-patients/.env
+    build:
+      dockerfile: ./Dockerfile
+      context: ./medical-patients
+    container_name: 'node_medical-patients'
+    volumes:
+      - ./medical-patients:/usr/src/app/medical-patients
+      - /usr/src/app/medical-patients/node_modules
+    restart: unless-stopped
