@@ -23,6 +23,7 @@ services:
       - 3000:3000
     depends_on:
       - patients
+      - zookeeper
 
   patients:
     env_file: ./medical-patients/.env
@@ -34,3 +35,6 @@ services:
       - ./medical-patients:/usr/src/app/medical-patients
       - /usr/src/app/medical-patients/node_modules
     restart: unless-stopped
+    depends_on:
+      - zookeeper
+
